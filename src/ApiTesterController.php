@@ -1,9 +1,9 @@
 <?php
 
-namespace Encore\Admin\ApiTester;
+namespace Ladmin\ApiTester;
 
-use Encore\Admin\Facades\Admin;
-use Encore\Admin\Layout\Content;
+use Ladmin\Facades\Admin;
+use Ladmin\Layout\Content;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -30,8 +30,8 @@ class ApiTesterController extends Controller
         $user = $request->get('user');
         $all = $request->all();
 
-        $keys = array_get($all, 'key', []);
-        $vals = array_get($all, 'val', []);
+        $keys = data_get($all, 'key', []);
+        $vals = data_get($all, 'val', []);
 
         ksort($keys);
         ksort($vals);
@@ -39,7 +39,7 @@ class ApiTesterController extends Controller
         $parameters = [];
 
         foreach ($keys as $index => $key) {
-            $parameters[$key] = array_get($vals, $index);
+            $parameters[$key] = data_get($vals, $index);
         }
 
         $parameters = array_filter($parameters, function ($key) {

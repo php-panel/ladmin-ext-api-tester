@@ -1,6 +1,6 @@
 <?php
 
-namespace Encore\Admin\ApiTester;
+namespace Ladmin\ApiTester;
 
 use Illuminate\Support\ServiceProvider;
 

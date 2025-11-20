@@ -1,8 +1,8 @@
 <?php
 
-namespace Encore\Admin\ApiTester;
+namespace Ladmin\ApiTester;
 
-use Encore\Admin\Admin;
+use Ladmin\Admin;
 
 trait BootExtension
 {
