@@ -39,7 +39,7 @@ class ApiTester extends Extension
      *
      * @param \Illuminate\Foundation\Application|null $app
      */
-    public function __construct(\Illuminate\Foundation\Application $app = null)
+    public function __construct(?\Illuminate\Foundation\Application $app = null)
     {
         $this->app = $app ?: app();
     }
@@ -54,7 +54,7 @@ class ApiTester extends Extension
      */
     public function call($method, $uri, $parameters = [], $user = null)
     {
-//        ApiLogger::log(...func_get_args());
+        //        ApiLogger::log(...func_get_args());
 
         if ($user) {
             $this->loginUsing($user);
@@ -74,8 +74,12 @@ class ApiTester extends Extension
         }
 
         $symfonyRequest = SymfonyRequest::create(
-            $uri, $method, $parameters,
-            [], $files, ['HTTP_ACCEPT' => 'application/json']
+            $uri,
+            $method,
+            $parameters,
+            [],
+            $files,
+            ['HTTP_ACCEPT' => 'application/json']
         );
 
         $request = Request::createFromBase($symfonyRequest);
@@ -150,9 +154,7 @@ class ApiTester extends Extension
      */
     protected function getStatusText(Response $response)
     {
-        $statusText = new \ReflectionProperty($response, 'statusText');
-
-        $statusText->setAccessible(true);
+        $statusText = new \ReflectionProperty(Response::class, 'statusText');
 
         return $statusText->getValue($response);
     }
@@ -201,7 +203,7 @@ class ApiTester extends Extension
         }
 
         if (!Str::startsWith($uri, 'http')) {
-            $uri = config('app.url').'/'.$uri;
+            $uri = config('app.url') . '/' . $uri;
         }
 
         return trim($uri, '/');
