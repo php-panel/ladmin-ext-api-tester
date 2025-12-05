@@ -2,7 +2,11 @@
     "name": "php-panel/ladmin-ext-api-tester",
     "description": "Api tester for laravel",
     "type": "library",
-    "keywords": ["laravel-admin", "api", "tester"],
+    "keywords": [
+        "laravel-admin",
+        "api",
+        "tester"
+    ],
     "homepage": "https://github.com/php-panel/ladmin-ext-api-tester",
     "license": "Apache-2.0",
     "authors": [
@@ -13,7 +17,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "php-panel/laravel-admin": "^3.0"
+        "php-panel/laravel-admin": ">=3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.0",
